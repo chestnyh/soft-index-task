@@ -105,6 +105,6 @@ function DataBase (){
 
 }
 
-const model = new Model();
+const database = new DataBase();
 
-module.exports = model;
+module.exports = database;

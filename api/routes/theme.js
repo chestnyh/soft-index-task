@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const model = require('../database/database');
+const database = require('../database/database');
 var bodyParser = require('body-parser');
 
 var jsonParser = bodyParser.json()
@@ -15,7 +15,7 @@ router.post('/',  jsonParser,(req, res, next) => {
 
     let name = req.body.name;
 
-    model.setTheme(name, function(error, result, fields){
+    database.setTheme(name, function(error, result, fields){
         res.status(201).json({
             "error": null,
             "themeId": result.insertId
@@ -47,7 +47,7 @@ router.get('/:themeId', (req, res, next) => {
         res.status(200).json(resultJson);
     }
 
-    model.getThemeById(themeId, function(error, result, fields){
+    database.getThemeById(themeId, function(error, result, fields){
 
         if(error){
             res.status(200).json({"error": "Some trouble with db send message to admin."});
@@ -72,7 +72,7 @@ router.get('/:themeId', (req, res, next) => {
 
     for(let key in resultJson.votes){
 
-        model.getVotesCount(themeId, key, function(error, result, fields){
+        database.getVotesCount(themeId, key, function(error, result, fields){
 
             if(error){
                 res.status(200).json({"error": "Some trouble with db send message to admin."});
@@ -100,7 +100,7 @@ router.post('/:themeId/:optionName', (req, res, next) => {
     let queriesCount = 0;
 
     const sendJsonResult = function(){
-        model.setVote(themeId, optionId, function(error, result, fields){
+        database.setVote(themeId, optionId, function(error, result, fields){
             
             if(error){
                 res.status(500);
@@ -115,7 +115,7 @@ router.post('/:themeId/:optionName', (req, res, next) => {
     }
 
     // Get option 
-    model.getOptionByName(optionName, function(error, result, fields){
+    database.getOptionByName(optionName, function(error, result, fields){
         
         if(error)
             res.status(200).json({"error": "No option with such name."});
@@ -128,7 +128,7 @@ router.post('/:themeId/:optionName', (req, res, next) => {
         }
     });
 
-    model.getThemeById(themeId, function(error, result, fields){
+    database.getThemeById(themeId, function(error, result, fields){
         
         if(error)
             res.status(200).json({"error": "No theme with such id."});

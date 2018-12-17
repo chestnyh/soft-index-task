@@ -1,10 +1,11 @@
-#Test from SOFTINDEX to create expressjs API server for votes 
+# Test from SOFTINDEX to create expressjs API server for votes 
 
 Using technologies : Express, MySQL, Squel
 
-#####Script for database:
+##### Script for database:
 
-```CREATE USER 'softindex'@'localhost' IDENTIFIED BY 'softindex';
+```
+CREATE USER 'softindex'@'localhost' IDENTIFIED BY 'softindex';
 
 CREATE DATABASE voting;
 
@@ -29,7 +30,13 @@ CREATE TABLE votes (
 );
 
 INSERT INTO options (name) VALUES ('yes');
-INSERT INTO options (name) VALUES ('no'); ``` 
+INSERT INTO options (name) VALUES ('no'); 
+``` 
 
-#####Install:
-``` npm install ```
+##### Install:
+``` 
+git clone https://github.com/chestnyh/soft-index-task.git
+cd soft-index-task
+npm install
+node server.js
+```

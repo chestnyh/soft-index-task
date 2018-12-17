@@ -1,0 +1,22 @@
+{
+  "name": "softindex-task",
+  "version": "1.0.0",
+  "description": "\"Test from soft softindex to create server with REST API for voting\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "expressjs",
+    "mysql",
+    "squel"
+  ],
+  "author": "Chestnykh Aleksei",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "squel": "^5.12.2"
+  }
+}
